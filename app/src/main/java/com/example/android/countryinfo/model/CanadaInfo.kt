@@ -1,3 +1,14 @@
 package com.example.android.countryinfo.model
 
-data class CanadaInfo(val title: String, val rows: List<Details>)
+import android.arch.persistence.room.*
+
+@Entity(tableName = "canada_info", indices = arrayOf(Index(value = ["title"], unique = true)))
+data class CanadaInfo(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int,
+    var title: String?,
+    @Ignore
+    val rows: List<Details>?
+){
+    constructor() : this(0, "UNKNOWN", emptyList())
+}
