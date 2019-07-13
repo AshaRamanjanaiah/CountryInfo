@@ -23,6 +23,9 @@ android {
         }
     }
 }
+android.defaultConfig{
+    testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+}
 
 dependencies {
     def version_retrofit = "2.5.0"
@@ -55,5 +58,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:2.0'
 }

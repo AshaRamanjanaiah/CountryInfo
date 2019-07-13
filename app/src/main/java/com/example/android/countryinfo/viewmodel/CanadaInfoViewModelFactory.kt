@@ -3,7 +3,6 @@ package com.example.android.countryinfo.viewmodel
 import android.app.Application
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.example.android.countryinfo.database.DetailsDAO
 
 class CanadaInfoViewModelFactory(
     private val application: Application) : ViewModelProvider.Factory  {

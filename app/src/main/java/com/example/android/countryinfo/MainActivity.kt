@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setTitle(resources.getString(R.string.about_canada))
 
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -48,10 +49,9 @@ class MainActivity : AppCompatActivity() {
             ViewModelProviders.of(
                 this, viewModelFactory).get(CanadaInfoViewModel::class.java)
 
-        insertDataToDB()
-
         canadaInfoViewModel.getAllDetails().observe(this,
             Observer<List<Details>> { t -> gotDataUpdateUI(t!!) })
+
     }
 
     private fun insertDataToDB() {
@@ -62,10 +62,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun gotDataUpdateUI(details: List<Details>) {
+        if(details.size == 0){
+            insertDataToDB()
+        }
         Log.d(TAG, "Data updated")
         canadaDetails = details
         canadaInfoAdapter = CanadaInfoAdapter(this, details)
         canadaInfoRecyclerview.adapter = canadaInfoAdapter
+
     }
 
     fun refreshData(view: View){

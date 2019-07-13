@@ -46,7 +46,7 @@ class CanadaInfoAdapter(val context: Context, val details: List<Details>?): Recy
         fun clickListener(imageHref: String?){
             val intent = Intent(context, DisplayImageActivity::class.java)
             intent.putExtra(IMAGE_URL, imageHref)
-            context.startActivity(intent);
+            context.startActivity(intent)
         }
 
     }

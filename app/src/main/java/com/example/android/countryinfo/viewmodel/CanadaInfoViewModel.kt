@@ -3,6 +3,7 @@ package com.example.android.countryinfo.viewmodel
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
+import com.example.android.countryinfo.model.CanadaInfo
 import com.example.android.countryinfo.model.Details
 import com.example.android.countryinfo.repository.CanadaInfoRepository
 

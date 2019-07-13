@@ -91,7 +91,7 @@ class CanadaInfoRepository(application: Application) {
             withContext(Dispatchers.IO) {
                 canadaInfoDao.insert(canadainfo)
                 detailsDao.insert(canadainfo?.rows)
-                Log.d(TAG, "Data inserted in to DB");
+                Log.d(TAG, "Data inserted in to DB")
             }
         }
     }

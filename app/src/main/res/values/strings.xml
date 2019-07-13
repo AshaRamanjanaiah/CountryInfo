@@ -2,4 +2,5 @@
     <string name="app_name">CountryInfo</string>
     <string name="place_image">Place Image</string>
     <string name="refresh">Refresh</string>
+    <string name="about_canada">About Canada</string>
 </resources>

@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.list_detail_item.view.*
 
 class DisplayImageActivity : AppCompatActivity() {
 
