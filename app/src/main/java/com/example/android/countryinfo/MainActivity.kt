@@ -4,7 +4,10 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.View
 import com.example.android.countryinfo.model.Details
 import com.example.android.countryinfo.viewmodel.CanadaInfoViewModel
 import com.example.android.countryinfo.viewmodel.CanadaInfoViewModelFactory
@@ -18,9 +21,25 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var canadaInfoViewModel: CanadaInfoViewModel
 
+    private lateinit var canadaInfoRecyclerview: RecyclerView
+    private lateinit var canadaInfoAdapter: CanadaInfoAdapter
+
+    private var canadaDetails = listOf<Details>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+
+        canadaInfoRecyclerview = findViewById<RecyclerView>(R.id.rv_canada_info).apply {
+
+            setHasFixedSize(true)
+
+            layoutManager = linearLayoutManager
+
+        }
 
         val viewModelFactory = CanadaInfoViewModelFactory(application)
 
@@ -32,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         insertDataToDB()
 
         canadaInfoViewModel.getAllDetails().observe(this,
-            Observer<List<Details>> { t -> gotData(t!!) })
+            Observer<List<Details>> { t -> gotDataUpdateUI(t!!) })
     }
 
     private fun insertDataToDB() {
@@ -42,8 +61,16 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun gotData(details: List<Details>) {
+    private fun gotDataUpdateUI(details: List<Details>) {
         Log.d(TAG, "Data updated")
+        canadaDetails = details
+        canadaInfoAdapter = CanadaInfoAdapter(this, details)
+        canadaInfoRecyclerview.adapter = canadaInfoAdapter
+    }
+
+    fun refreshData(view: View){
+        insertDataToDB()
+        Log.d(TAG, "Updated data in DB")
     }
 
 }

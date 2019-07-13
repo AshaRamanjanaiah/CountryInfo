@@ -7,7 +7,7 @@ import android.content.Context
 import com.example.android.countryinfo.model.CanadaInfo
 import com.example.android.countryinfo.model.Details
 
-@Database(entities = [CanadaInfo::class, Details::class], version = 2, exportSchema = false)
+@Database(entities = [CanadaInfo::class, Details::class], version = 7, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val canadaInfoDao: CanadaInfoDao

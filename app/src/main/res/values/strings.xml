@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CountryInfo</string>
+    <string name="place_image">Place Image</string>
+    <string name="refresh">Refresh</string>
 </resources>

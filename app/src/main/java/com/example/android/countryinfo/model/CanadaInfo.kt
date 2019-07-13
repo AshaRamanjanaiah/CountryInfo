@@ -8,7 +8,7 @@ data class CanadaInfo(
     var id: Int,
     var title: String?,
     @Ignore
-    val rows: List<Details>?
+    val rows: List<Details>
 ){
     constructor() : this(0, "UNKNOWN", emptyList())
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_margin">16dp</dimen>
+    <dimen name="divider_line_height">1dp</dimen>
+    <dimen name="rv_margin">5dp</dimen>
+    <dimen name="list_padding">4dp</dimen>
+    <dimen name="list_paddingBottom">10dp</dimen>
+    <dimen name="subtitle_padding_bottom">9dp</dimen>
+    <dimen name="cardview_margin">5dp</dimen>
+</resources>
