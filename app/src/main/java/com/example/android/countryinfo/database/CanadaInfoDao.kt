@@ -16,7 +16,6 @@ interface CanadaInfoDao {
     @Query("DELETE FROM canada_info")
     fun deleteAllNotes()
 
-    @Query("SELECT * FROM canada_info ")
-    fun getAllDetails(): LiveData<List<CanadaInfo>>
-
+    @Query("SELECT * FROM canada_info")
+    fun getTitle(): LiveData<List<CanadaInfo>>
 }

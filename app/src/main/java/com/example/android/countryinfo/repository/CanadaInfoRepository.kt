@@ -22,11 +22,14 @@ class CanadaInfoRepository(application: Application) {
 
     private var allDetails: LiveData<List<Details>>
 
+    private var titleInfo: LiveData<List<CanadaInfo>>
+
     init {
         val database: AppDatabase = AppDatabase.getInstance(application.applicationContext)
         canadaInfoDao = database.canadaInfoDao
         detailsDao = database.detailsDAO
         allDetails = detailsDao.getAllDetails()
+        titleInfo = canadaInfoDao.getTitle()
     }
 
     private val repositoryJob = Job()
@@ -68,6 +71,15 @@ class CanadaInfoRepository(application: Application) {
      *
      */
 
+    fun getTitleInfo(): LiveData<List<CanadaInfo>>{
+        return titleInfo
+    }
+
+    /**
+     * Gets data from network.
+     *
+     */
+
     fun getDataFromNetwork(){
         CanadaApi.retrofitService.getCanadaInfo().enqueue(object : retrofit2.Callback<CanadaInfo> {
             override fun onFailure(call: Call<CanadaInfo>, t: Throwable) {
@@ -85,6 +97,11 @@ class CanadaInfoRepository(application: Application) {
 
         })
     }
+
+    /**
+     * Inserts data in to DB.
+     *
+     */
 
     suspend fun insertCanadaInfoToDB(canadainfo: CanadaInfo?) {
         uiScope.launch {

@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import com.example.android.countryinfo.model.CanadaInfo
 import com.example.android.countryinfo.model.Details
 import com.example.android.countryinfo.viewmodel.CanadaInfoViewModel
 import com.example.android.countryinfo.viewmodel.CanadaInfoViewModelFactory
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setTitle(resources.getString(R.string.about_canada))
 
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -52,6 +52,16 @@ class MainActivity : AppCompatActivity() {
         canadaInfoViewModel.getAllDetails().observe(this,
             Observer<List<Details>> { t -> gotDataUpdateUI(t!!) })
 
+        canadaInfoViewModel.getTitleInfo().observe(this,
+            Observer<List<CanadaInfo>> { t -> updateTitle(t!!) })
+
+    }
+
+    private fun updateTitle(titleInfo: List<CanadaInfo>) {
+        if(titleInfo.size != 0){
+            var title = titleInfo.get(0).title
+            setTitle(title)
+        }
     }
 
     private fun insertDataToDB() {

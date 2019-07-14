@@ -29,4 +29,8 @@ class CanadaInfoViewModel(
         repository.cancelJob()
     }
 
+    fun getTitleInfo(): LiveData<List<CanadaInfo>>{
+        return repository.getTitleInfo()
+    }
+
 }
